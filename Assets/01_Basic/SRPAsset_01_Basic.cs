@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-public class SRPAsset_01_Basic : MonoBehaviour
+namespace UnitySRPFromScratch._01_Basic
 {
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu(menuName = "SRP Assets/01_Basic")]
+    public class SRPAsset_01_Basic : RenderPipelineAsset
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        protected override RenderPipeline CreatePipeline()
+        {
+            return new SRP_01_Basic();
+        }
     }
 }
+
