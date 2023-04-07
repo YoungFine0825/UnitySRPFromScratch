@@ -13,7 +13,15 @@ namespace UnitySRPFromScratch._01_Basic
         {
             foreach (var cam in cameras)
             {
-                renderer.DoRender(context, cam);
+#if UNITY_EDITOR
+                if (cam.cameraType == CameraType.SceneView)
+                {
+                    ScriptableRenderContext.EmitWorldGeometryForSceneView(cam);
+                }
+#endif
+                //
+                renderer.DoRender(context, cam,this);
+
             }
         }
     }
